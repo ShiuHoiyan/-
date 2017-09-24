@@ -1,0 +1,56 @@
+<template name="banner">
+  <swiper class="banner" autoplay="true" interval="5000" duration="5000">
+      <block wx:for="{{banner}}" wx:key="{{image_id}}">
+      <swiper-item>
+        <image src="{{item.url}}" class="slide-image" mode="widthFix"/>
+      </swiper-item>
+      </block>
+  </swiper>
+</template>
+
+<template name="selected">
+  <view class="selected">
+    <view class="title">
+      <image src="../../images/lines.png" class="title-lines"/>
+      <span>本周精选</span>
+      <image src="../../images/lines.png" class="title-lines"/>
+      <span class="tip">查看更多</span>
+    </view>
+    <view wx:for="{{select}}" class="select-item" wx:key="{{item.sku_id}}">
+      <view class="item-image">
+        <image src="{{item.images[0].url}}" mode="widthFix"/>
+      </view>
+      <view class="item-info">
+        <text>{{item.brand.name}}</text>
+        <text>{{item.name}}</text>
+        <text>{{item.price.value_display || item.price2.value_display}}</text>
+        <view class="trangle"/>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="column">
+<view class="column">
+    <view wx:for="{{column}}" class="column-item" wx:key="{{item.goods_list_id}}">
+      <view class="column-image">
+        <image src="{{item.covers[0].url}}" mode="widthFix"/>
+        <view class="trangle"/>
+      </view>
+      <scroll-view class="scroll-view_H" scroll-x="{{true}}">
+        <block wx:for="{{item.sku}}" wx:for-item="detail" wx:key="{{detail.sku_id}}">
+          <view class="scroll-item" wx:if="{{detail.sku_id}}">
+            <view class="scroll-image">
+              <image src="{{detail.images[0].url}}" mode="aspectFit"/>
+            </view>
+            <view class="item-info">
+              <text>{{detail.brand.name}}</text>
+              <text>{{detail.price.value_display || detail.price2.value_display}}</text>
+              <text>{{detail.coupon_tip[0]}}</text>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</template>

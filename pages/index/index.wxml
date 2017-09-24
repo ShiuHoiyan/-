@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<import src="../template/template.wxml"/>
+<view class="container">
+  <scroll-view scroll-y bindscrolltolower="loadMore" style="height:{{scrollHeight}}px;">
+    <image src="../../images/top.png" class="topping" mode="widthFix"/>
+    <template is="banner" data="{{banner}}"/>
+    <template is="selected" data="{{select}}"/>
+    <template is="column" data="{{column}}" />
+  </scroll-view>
+</view>
